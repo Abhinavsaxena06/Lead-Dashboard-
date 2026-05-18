@@ -2,9 +2,9 @@ import {
   createContext,
   useContext,
   useEffect,
-  useState,
-  ReactNode
+  useState
 } from "react";
+import type { ReactNode } from "react";
 
 interface User {
   id: string;

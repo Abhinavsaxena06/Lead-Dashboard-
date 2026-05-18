@@ -1,4 +1,5 @@
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import type { FormEvent } from "react";
 import toast from "react-hot-toast";
 import axiosInstance from "../api/axiosInstance";
 import type { Lead } from "../types/lead.types";
