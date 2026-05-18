@@ -58,87 +58,87 @@ const Analytics = () => {
       <Sidebar />
 
       <main className="flex-1 p-4 sm:p-6 lg:p-8">
-        <section className="mb-6 rounded-[32px] border border-white/70 bg-white/70 p-6 shadow-sm backdrop-blur-2xl">
-          <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-violet-600">
+        <section className="mb-6 rounded-[30px] border border-white/70 bg-white/70 p-6 shadow-sm backdrop-blur-2xl">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-violet-500">
             Analytics
           </p>
 
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-800">
+          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-700">
             Lead Insights
           </h1>
 
-          <p className="mt-2 max-w-xl text-sm leading-6 text-slate-500">
+          <p className="mt-3 max-w-xl text-sm leading-6 text-slate-500">
             View a clean summary of your lead quality, status distribution, and
             acquisition sources.
           </p>
         </section>
 
         <section className="mb-6 grid grid-cols-1 gap-5 md:grid-cols-4">
-          <div className="rounded-[26px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl">
-            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-violet-50 text-violet-600">
-              <Users size={21} />
+          <div className="rounded-[24px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl">
+            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-violet-50 text-violet-500">
+              <Users size={20} />
             </div>
 
-            <p className="text-xs font-bold uppercase tracking-wide text-slate-400">
+            <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
               Total Leads
             </p>
 
-            <h3 className="mt-2 text-3xl font-extrabold text-slate-800">
+            <h3 className="mt-2 text-2xl font-semibold text-slate-700">
               {leads.length}
             </h3>
           </div>
 
-          <div className="rounded-[26px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl">
-            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-50 text-cyan-600">
-              <Target size={21} />
+          <div className="rounded-[24px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl">
+            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-50 text-cyan-500">
+              <Target size={20} />
             </div>
 
-            <p className="text-xs font-bold uppercase tracking-wide text-slate-400">
+            <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
               Conversion
             </p>
 
-            <h3 className="mt-2 text-3xl font-extrabold text-slate-800">
+            <h3 className="mt-2 text-2xl font-semibold text-slate-700">
               {conversionRate}%
             </h3>
           </div>
 
-          <div className="rounded-[26px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl">
-            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-fuchsia-50 text-fuchsia-600">
-              <TrendingUp size={21} />
+          <div className="rounded-[24px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl">
+            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-fuchsia-50 text-fuchsia-500">
+              <TrendingUp size={20} />
             </div>
 
-            <p className="text-xs font-bold uppercase tracking-wide text-slate-400">
+            <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
               Top Status
             </p>
 
-            <h3 className="mt-2 text-2xl font-extrabold text-slate-800">
+            <h3 className="mt-2 text-xl font-semibold text-slate-700">
               {topStatus}
             </h3>
           </div>
 
-          <div className="rounded-[26px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl">
-            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
-              <BarChart3 size={21} />
+          <div className="rounded-[24px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl">
+            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-500">
+              <BarChart3 size={20} />
             </div>
 
-            <p className="text-xs font-bold uppercase tracking-wide text-slate-400">
+            <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
               Best Source
             </p>
 
-            <h3 className="mt-2 text-2xl font-extrabold text-slate-800">
+            <h3 className="mt-2 text-xl font-semibold text-slate-700">
               {bestSource}
             </h3>
           </div>
         </section>
 
         <section className="grid grid-cols-1 gap-6 xl:grid-cols-2">
-          <div className="rounded-[30px] border border-white/70 bg-white/75 p-6 shadow-sm backdrop-blur-2xl">
+          <div className="rounded-[28px] border border-white/70 bg-white/75 p-6 shadow-sm backdrop-blur-2xl">
             <div className="mb-6">
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-violet-500">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-500">
                 Pipeline
               </p>
 
-              <h2 className="mt-1 text-xl font-extrabold text-slate-800">
+              <h2 className="mt-1 text-lg font-semibold text-slate-700">
                 Status Distribution
               </h2>
             </div>
@@ -146,7 +146,7 @@ const Analytics = () => {
             <div className="space-y-5">
               {Object.entries(statusCounts).map(([label, value]) => (
                 <div key={label}>
-                  <div className="mb-2 flex justify-between text-sm font-semibold text-slate-600">
+                  <div className="mb-2 flex justify-between text-sm font-medium text-slate-500">
                     <span>{label}</span>
                     <span>{value}</span>
                   </div>
@@ -164,13 +164,13 @@ const Analytics = () => {
             </div>
           </div>
 
-          <div className="rounded-[30px] border border-white/70 bg-white/75 p-6 shadow-sm backdrop-blur-2xl">
+          <div className="rounded-[28px] border border-white/70 bg-white/75 p-6 shadow-sm backdrop-blur-2xl">
             <div className="mb-6">
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-500">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-500">
                 Acquisition
               </p>
 
-              <h2 className="mt-1 text-xl font-extrabold text-slate-800">
+              <h2 className="mt-1 text-lg font-semibold text-slate-700">
                 Source Distribution
               </h2>
             </div>
@@ -178,7 +178,7 @@ const Analytics = () => {
             <div className="space-y-5">
               {Object.entries(sourceCounts).map(([label, value]) => (
                 <div key={label}>
-                  <div className="mb-2 flex justify-between text-sm font-semibold text-slate-600">
+                  <div className="mb-2 flex justify-between text-sm font-medium text-slate-500">
                     <span>{label}</span>
                     <span>{value}</span>
                   </div>

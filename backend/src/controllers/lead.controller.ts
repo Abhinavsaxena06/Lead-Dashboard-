@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import type { SortOrder } from "mongoose";
 import Lead from "../models/Lead";
 import { AuthRequest } from "../middleware/auth.middleware";
 
@@ -75,8 +76,9 @@ export const getLeads = async (
       ];
     }
 
-    const sortOption = sort === "oldest" ? { createdAt: 1 } : { createdAt: -1 };
-
+    const sortOption: { createdAt: SortOrder } =
+  sort === "oldest" ? { createdAt: 1 } : { createdAt: -1 };
+  
     const totalLeads = await Lead.countDocuments(query);
 
     const leads = await Lead.find(query)

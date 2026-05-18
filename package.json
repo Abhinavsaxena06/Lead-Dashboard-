@@ -1,5 +1,10 @@
 {
-  "dependencies": {
-    "file-saver": "^2.0.5"
+  "name": "smart-leads-dashboard",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
   }
 }

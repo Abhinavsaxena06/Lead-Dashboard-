@@ -102,18 +102,18 @@ const Leads = () => {
       <Sidebar />
 
       <main className="flex-1 p-4 sm:p-6 lg:p-8">
-        <section className="mb-6 rounded-[32px] border border-white/70 bg-white/70 p-6 shadow-sm backdrop-blur-2xl">
+        <section className="mb-6 rounded-[30px] border border-white/70 bg-white/70 p-6 shadow-sm backdrop-blur-2xl">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-violet-600">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-violet-500">
                 Lead Workspace
               </p>
 
-              <h1 className="text-3xl font-extrabold tracking-tight text-slate-800">
+              <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-700">
                 Lead Management
               </h1>
 
-              <p className="mt-2 max-w-xl text-sm leading-6 text-slate-500">
+              <p className="mt-3 max-w-xl text-sm leading-6 text-slate-500">
                 Create, organize, search, filter, and export your sales leads
                 from one clean workspace.
               </p>
@@ -122,7 +122,7 @@ const Leads = () => {
             <div className="flex flex-col gap-3 sm:flex-row">
               <button
                 onClick={handleExportCSV}
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-600 shadow-sm transition hover:bg-slate-50"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-600 shadow-sm transition hover:bg-slate-50"
               >
                 <Download size={16} />
                 Export CSV
@@ -130,7 +130,7 @@ const Leads = () => {
 
               <button
                 onClick={() => setIsAddModalOpen(true)}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-violet-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-violet-700"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-violet-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-violet-700"
               >
                 <Plus size={16} />
                 Add Lead
@@ -139,8 +139,8 @@ const Leads = () => {
           </div>
         </section>
 
-        <section className="mb-6 rounded-[28px] border border-white/70 bg-white/70 p-5 shadow-sm backdrop-blur-2xl">
-          <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-700">
+        <section className="mb-6 rounded-[26px] border border-white/70 bg-white/70 p-5 shadow-sm backdrop-blur-2xl">
+          <div className="mb-4 flex items-center gap-2 text-sm font-medium text-slate-600">
             <Filter size={17} className="text-violet-500" />
             Filters
           </div>
@@ -157,7 +157,7 @@ const Leads = () => {
                 placeholder="Search name or email"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 pl-11 text-sm text-slate-700 outline-none transition focus:border-violet-400 focus:ring-4 focus:ring-violet-100"
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 pl-11 text-sm text-slate-600 outline-none transition focus:border-violet-400 focus:ring-4 focus:ring-violet-100"
               />
             </div>
 
@@ -209,11 +209,11 @@ const Leads = () => {
         <div className="mt-6 flex flex-col items-center justify-between gap-4 rounded-[24px] border border-white/70 bg-white/65 px-5 py-4 shadow-sm backdrop-blur-xl sm:flex-row">
           <p className="text-sm text-slate-500">
             Page{" "}
-            <span className="font-semibold text-slate-800">
+            <span className="font-medium text-slate-700">
               {pagination.currentPage}
             </span>{" "}
             of{" "}
-            <span className="font-semibold text-slate-800">
+            <span className="font-medium text-slate-700">
               {pagination.totalPages}
             </span>
           </p>
@@ -222,7 +222,7 @@ const Leads = () => {
             <button
               disabled={!pagination.hasPrevPage}
               onClick={() => setPage((prev) => prev - 1)}
-              className="rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-slate-600 shadow-sm disabled:opacity-50"
+              className="rounded-xl bg-white px-5 py-2.5 text-sm font-medium text-slate-600 shadow-sm disabled:opacity-50"
             >
               Previous
             </button>
@@ -230,7 +230,7 @@ const Leads = () => {
             <button
               disabled={!pagination.hasNextPage}
               onClick={() => setPage((prev) => prev + 1)}
-              className="rounded-xl bg-violet-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm disabled:opacity-50"
+              className="rounded-xl bg-violet-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm disabled:opacity-50"
             >
               Next
             </button>
