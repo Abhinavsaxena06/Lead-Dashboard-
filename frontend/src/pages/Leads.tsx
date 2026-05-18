@@ -3,6 +3,7 @@ import { Download, Filter, Plus, Search } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import LeadTable from "../components/LeadTable";
 import AddLeadModal from "../components/AddLeadModal";
+import ThemeToggle from "../components/ThemeToggle";
 import axiosInstance from "../api/axiosInstance";
 import type { Lead, LeadsResponse } from "../types/lead.types";
 
@@ -17,7 +18,7 @@ const Leads = () => {
   const [page, setPage] = useState(1);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
-  const [pagination, setPagination] = useState({
+  const [, setPagination] = useState({
     totalLeads: 0,
     currentPage: 1,
     totalPages: 1,
@@ -98,22 +99,24 @@ const Leads = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-indigo-50 to-cyan-50 flex">
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-indigo-50 to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex transition-colors duration-300">
       <Sidebar />
 
-      <main className="flex-1 p-4 sm:p-6 lg:p-8">
-        <section className="mb-6 rounded-[30px] border border-white/70 bg-white/70 p-6 shadow-sm backdrop-blur-2xl">
+      <main className="relative flex-1 p-4 sm:p-6 lg:p-8">
+        <ThemeToggle />
+
+        <section className="mb-6 rounded-[30px] border border-white/70 bg-white/70 p-6 shadow-sm backdrop-blur-2xl dark:border-slate-700 dark:bg-slate-900/70">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-violet-500">
                 Lead Workspace
               </p>
 
-              <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-700">
+              <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-700 dark:text-slate-100">
                 Lead Management
               </h1>
 
-              <p className="mt-3 max-w-xl text-sm leading-6 text-slate-500">
+              <p className="mt-3 max-w-xl text-sm leading-6 text-slate-500 dark:text-slate-400">
                 Create, organize, search, filter, and export your sales leads
                 from one clean workspace.
               </p>
@@ -122,7 +125,7 @@ const Leads = () => {
             <div className="flex flex-col gap-3 sm:flex-row">
               <button
                 onClick={handleExportCSV}
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-600 shadow-sm transition hover:bg-slate-50"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-600 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
               >
                 <Download size={16} />
                 Export CSV
@@ -139,8 +142,8 @@ const Leads = () => {
           </div>
         </section>
 
-        <section className="mb-6 rounded-[26px] border border-white/70 bg-white/70 p-5 shadow-sm backdrop-blur-2xl">
-          <div className="mb-4 flex items-center gap-2 text-sm font-medium text-slate-600">
+        <section className="mb-6 rounded-[26px] border border-white/70 bg-white/70 p-5 shadow-sm backdrop-blur-2xl dark:border-slate-700 dark:bg-slate-900/70">
+          <div className="mb-4 flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-300">
             <Filter size={17} className="text-violet-500" />
             Filters
           </div>
@@ -157,7 +160,7 @@ const Leads = () => {
                 placeholder="Search name or email"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 pl-11 text-sm text-slate-600 outline-none transition focus:border-violet-400 focus:ring-4 focus:ring-violet-100"
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 pl-11 text-sm text-slate-600 outline-none transition focus:border-violet-400 focus:ring-4 focus:ring-violet-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
               />
             </div>
 
@@ -167,7 +170,7 @@ const Leads = () => {
                 setStatus(e.target.value);
                 setPage(1);
               }}
-              className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-600 outline-none transition focus:border-violet-400 focus:ring-4 focus:ring-violet-100"
+              className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-600 outline-none transition dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
             >
               <option value="">All Status</option>
               <option value="New">New</option>
@@ -182,7 +185,7 @@ const Leads = () => {
                 setSource(e.target.value);
                 setPage(1);
               }}
-              className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-600 outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-100"
+              className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-600 outline-none transition dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
             >
               <option value="">All Sources</option>
               <option value="Website">Website</option>
@@ -196,7 +199,7 @@ const Leads = () => {
                 setSort(e.target.value);
                 setPage(1);
               }}
-              className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-600 outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-100"
+              className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-600 outline-none transition dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
             >
               <option value="latest">Latest First</option>
               <option value="oldest">Oldest First</option>
@@ -205,37 +208,6 @@ const Leads = () => {
         </section>
 
         <LeadTable leads={leads} loading={loading} onRefresh={fetchLeads} />
-
-        <div className="mt-6 flex flex-col items-center justify-between gap-4 rounded-[24px] border border-white/70 bg-white/65 px-5 py-4 shadow-sm backdrop-blur-xl sm:flex-row">
-          <p className="text-sm text-slate-500">
-            Page{" "}
-            <span className="font-medium text-slate-700">
-              {pagination.currentPage}
-            </span>{" "}
-            of{" "}
-            <span className="font-medium text-slate-700">
-              {pagination.totalPages}
-            </span>
-          </p>
-
-          <div className="flex items-center gap-3">
-            <button
-              disabled={!pagination.hasPrevPage}
-              onClick={() => setPage((prev) => prev - 1)}
-              className="rounded-xl bg-white px-5 py-2.5 text-sm font-medium text-slate-600 shadow-sm disabled:opacity-50"
-            >
-              Previous
-            </button>
-
-            <button
-              disabled={!pagination.hasNextPage}
-              onClick={() => setPage((prev) => prev + 1)}
-              className="rounded-xl bg-violet-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm disabled:opacity-50"
-            >
-              Next
-            </button>
-          </div>
-        </div>
 
         <AddLeadModal
           isOpen={isAddModalOpen}

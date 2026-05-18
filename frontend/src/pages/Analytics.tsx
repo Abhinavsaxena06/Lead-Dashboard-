@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
-import { BarChart3, Target, TrendingUp, Users } from "lucide-react";
+import {
+  BarChart3,
+  Target,
+  TrendingUp,
+  Users
+} from "lucide-react";
 import Sidebar from "../components/Sidebar";
+import ThemeToggle from "../components/ThemeToggle";
 import axiosInstance from "../api/axiosInstance";
 import type { Lead, LeadsResponse } from "../types/lead.types";
 
@@ -39,8 +45,6 @@ const Analytics = () => {
     Referral: leads.filter((lead) => lead.source === "Referral").length
   };
 
-  const maxStatus = Math.max(...Object.values(statusCounts), 1);
-  const maxSource = Math.max(...Object.values(sourceCounts), 1);
 
   const bestSource =
     Object.entries(sourceCounts).sort((a, b) => b[1] - a[1])[0][0];
@@ -54,28 +58,30 @@ const Analytics = () => {
       : Math.round((statusCounts.Qualified / leads.length) * 100);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-indigo-50 to-cyan-50 flex">
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-indigo-50 to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex transition-colors duration-300">
       <Sidebar />
 
-      <main className="flex-1 p-4 sm:p-6 lg:p-8">
-        <section className="mb-6 rounded-[30px] border border-white/70 bg-white/70 p-6 shadow-sm backdrop-blur-2xl">
+      <main className="relative flex-1 p-4 sm:p-6 lg:p-8">
+        <ThemeToggle />
+
+        <section className="mb-6 rounded-[30px] border border-white/70 bg-white/70 p-6 shadow-sm backdrop-blur-2xl dark:border-slate-700 dark:bg-slate-900/70">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-violet-500">
             Analytics
           </p>
 
-          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-700">
+          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-700 dark:text-slate-100">
             Lead Insights
           </h1>
 
-          <p className="mt-3 max-w-xl text-sm leading-6 text-slate-500">
-            View a clean summary of your lead quality, status distribution, and
-            acquisition sources.
+          <p className="mt-3 max-w-xl text-sm leading-6 text-slate-500 dark:text-slate-400">
+            View a clean summary of your lead quality, status distribution,
+            and acquisition sources.
           </p>
         </section>
 
         <section className="mb-6 grid grid-cols-1 gap-5 md:grid-cols-4">
-          <div className="rounded-[24px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl">
-            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-violet-50 text-violet-500">
+          <div className="rounded-[24px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl dark:border-slate-700 dark:bg-slate-900/75">
+            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-violet-50 text-violet-500 dark:bg-violet-900/30">
               <Users size={20} />
             </div>
 
@@ -83,13 +89,13 @@ const Analytics = () => {
               Total Leads
             </p>
 
-            <h3 className="mt-2 text-2xl font-semibold text-slate-700">
+            <h3 className="mt-2 text-2xl font-semibold text-slate-700 dark:text-slate-100">
               {leads.length}
             </h3>
           </div>
 
-          <div className="rounded-[24px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl">
-            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-50 text-cyan-500">
+          <div className="rounded-[24px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl dark:border-slate-700 dark:bg-slate-900/75">
+            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-50 text-cyan-500 dark:bg-cyan-900/30">
               <Target size={20} />
             </div>
 
@@ -97,13 +103,13 @@ const Analytics = () => {
               Conversion
             </p>
 
-            <h3 className="mt-2 text-2xl font-semibold text-slate-700">
+            <h3 className="mt-2 text-2xl font-semibold text-slate-700 dark:text-slate-100">
               {conversionRate}%
             </h3>
           </div>
 
-          <div className="rounded-[24px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl">
-            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-fuchsia-50 text-fuchsia-500">
+          <div className="rounded-[24px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl dark:border-slate-700 dark:bg-slate-900/75">
+            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-fuchsia-50 text-fuchsia-500 dark:bg-fuchsia-900/30">
               <TrendingUp size={20} />
             </div>
 
@@ -111,13 +117,13 @@ const Analytics = () => {
               Top Status
             </p>
 
-            <h3 className="mt-2 text-xl font-semibold text-slate-700">
+            <h3 className="mt-2 text-xl font-semibold text-slate-700 dark:text-slate-100">
               {topStatus}
             </h3>
           </div>
 
-          <div className="rounded-[24px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl">
-            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-500">
+          <div className="rounded-[24px] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-2xl dark:border-slate-700 dark:bg-slate-900/75">
+            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-500 dark:bg-emerald-900/30">
               <BarChart3 size={20} />
             </div>
 
@@ -125,75 +131,9 @@ const Analytics = () => {
               Best Source
             </p>
 
-            <h3 className="mt-2 text-xl font-semibold text-slate-700">
+            <h3 className="mt-2 text-xl font-semibold text-slate-700 dark:text-slate-100">
               {bestSource}
             </h3>
-          </div>
-        </section>
-
-        <section className="grid grid-cols-1 gap-6 xl:grid-cols-2">
-          <div className="rounded-[28px] border border-white/70 bg-white/75 p-6 shadow-sm backdrop-blur-2xl">
-            <div className="mb-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-500">
-                Pipeline
-              </p>
-
-              <h2 className="mt-1 text-lg font-semibold text-slate-700">
-                Status Distribution
-              </h2>
-            </div>
-
-            <div className="space-y-5">
-              {Object.entries(statusCounts).map(([label, value]) => (
-                <div key={label}>
-                  <div className="mb-2 flex justify-between text-sm font-medium text-slate-500">
-                    <span>{label}</span>
-                    <span>{value}</span>
-                  </div>
-
-                  <div className="h-3 overflow-hidden rounded-full bg-slate-200/80">
-                    <div
-                      className="h-3 rounded-full bg-violet-500"
-                      style={{
-                        width: `${(value / maxStatus) * 100}%`
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-[28px] border border-white/70 bg-white/75 p-6 shadow-sm backdrop-blur-2xl">
-            <div className="mb-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-500">
-                Acquisition
-              </p>
-
-              <h2 className="mt-1 text-lg font-semibold text-slate-700">
-                Source Distribution
-              </h2>
-            </div>
-
-            <div className="space-y-5">
-              {Object.entries(sourceCounts).map(([label, value]) => (
-                <div key={label}>
-                  <div className="mb-2 flex justify-between text-sm font-medium text-slate-500">
-                    <span>{label}</span>
-                    <span>{value}</span>
-                  </div>
-
-                  <div className="h-3 overflow-hidden rounded-full bg-slate-200/80">
-                    <div
-                      className="h-3 rounded-full bg-cyan-500"
-                      style={{
-                        width: `${(value / maxSource) * 100}%`
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
       </main>
