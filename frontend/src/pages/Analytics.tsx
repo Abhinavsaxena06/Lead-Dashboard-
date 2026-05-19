@@ -9,7 +9,6 @@ import {
   Sparkles,
   Target,
   TrendingUp,
-  Users
 } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import ThemeToggle from "../components/ThemeToggle";
